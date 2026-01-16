@@ -1,72 +1,226 @@
 <!DOCTYPE html PUBLIC "-//w3c//dtd html 3.2//en">
 <html><head>
 <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-<title>MIDI PLAYER TEST</title>
 
-<body bgcolor="#000000" text="#FFFFFF" link="#FF80FF" vlink="#FF40FF" alink="#FF80FF">
-
+<meta charset="UTF-8">
+<title>Kings MIDI Player</title>
 <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
 
-     HTML CSS 
 
-     
-    Result
-    Skip Results Iframe
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 850px;
+        margin: 30px auto;
+        line-height: 1.4;
+    }
 
-EDIT ON
+    h1 {
+        margin-bottom: 10px;
+    }
 
-<p>This is a demo for the <strong>html-midi-player</strong> package. For more information, see <a href="https://github.com/cifkao/html-midi-player" target="_blank">its GitHub repository</a>.</p>
+    h2 {
+        margin-top: 30px;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 5px;
+    }
 
-<section id="section3">
-<h2>Custom player and visualizer style</h2>
-<midi-player
-  src="http://donna.huffmancoding.com/midis/test.mid"
-  sound-font visualizer="#section3 midi-visualizer">
-</midi-player>
-<midi-visualizer
-  src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/jazz.mid">
-</midi-visualizer>
-</section>
+    .movement {
+        margin: 12px 0;
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+    }
 
-<section id="section1">
-<h2>1 player, 2 visualizers</h2>
-<midi-visualizer
-  type="piano-roll"
-  src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">
-</midi-visualizer>
-<midi-visualizer
-  type="staff"
-  src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">
-</midi-visualizer>
-<midi-player
-  src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid"
-  sound-font visualizer="#section1 midi-visualizer">
-</midi-player>
-</section>
+    .row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
 
-<section id="section2">
-<h2>2 players, 1 visualizer</h2>
-<midi-player
-  src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid"
-  sound-font visualizer="#section2 midi-visualizer">
-</midi-player>
-<midi-player
-  src="https://cdn.jsdelivr.net/gh/magenta/magenta-js@571b384/music/demos/melody.mid"
-  sound-font visualizer="#section2 midi-visualizer">
-</midi-player>
-<midi-visualizer
-  type="piano-roll">
-</midi-visualizer>
-</section>
+    select {
+        padding: 3px;
+    }
 
-<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+    midi-player {
+        margin-top: 6px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+    }
+
+    td {
+        padding: 6px;
+    }
+
+    td:first-child {
+        font-weight: bold;
+        width: 30%;
+    }
+
+    td a {
+        text-decoration: none;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Kings MIDI Player</h1>
+
+<!-- ===================================================== -->
+<!-- MAJOR WORK 1 -->
+<!-- ===================================================== -->
+<h2>Major Work 1</h2>
+<div class="movement">
+    <div class="row">
+        <strong>MW2 – 1st Movement</strong>
+
+        <select id="mw2m1-select">
+            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">Balanced</option>
+            <option value="midis/MW2-M1-Soprano.mid">Soprano</option>
+            <option value="midis/MW2-M1-Alto.mid">Alto</option>
+            <option value="midis/MW2-M1-Tenor.mid">Tenor</option>
+            <option value="midis/MW2-M1-Bass.mid">Bass</option>
+        </select>
+
+        <label>Speed</label>
+        <input type="range" id="mw2m1-speed" min="0.5" max="1.5" step="0.01" value="1" style="width:120px;">
+
+        <label>Pan</label>
+        <input type="range" id="mw2m1-pan" min="-1" max="1" step="0.01" value="0" style="width:120px;">
+    </div>
+
+    <midi-player id="mw2m1-player" sound-font visualizer="#mw2m1-viz"></midi-player>
+    <midi-visualizer type="piano-roll" id="mw2m1-viz"></midi-visualizer>
+</div>
 
 
 
+<!-- MOVEMENT 1 -->
+<div class="movement">
+    <div class="row">
+        <strong>1st Movement</strong>
 
+        <select id="mw1m1-select">
+            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">Balanced</option>
+            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">Soprano</option>
+            <option value="https://magenta.github.io/magenta-js/music/demos/melody.mid">Alto</option>
+            <option value="https://magenta.github.io/magenta-js/music/demos/melody.mid">Tenor</option>
+            <option value="https://magenta.github.io/magenta-js/music/demos/melody.mid">Bass</option>
+        </select>
 
+    </div>
 
+    <midi-player id="mw1m1-player"></midi-player>
+</div>
 
+<!-- MOVEMENT 2 -->
+<div class="movement">
+    <div class="row">
+        <strong>2nd Movement</strong>
 
+        <select id="mw1m2-select">
+            <option value="midis/MW1-M2-Balanced.mid">Balanced</option>
+            <option value="midis/MW1-M2-Soprano.mid">Soprano</option>
+            <option value="midis/MW1-M2-Alto.mid">Alto</option>
+            <option value="midis/MW1-M2-Tenor.mid">Tenor</option>
+            <option value="midis/MW1-M2-Bass.mid">Bass</option>
+        </select>
 
-</p></body></html>
+        <label>Pan</label>
+        <input type="range" id="mw1m2-pan" min="-1" max="1" step="0.01" value="0" style="width:120px;">
+
+        <label>Speed</label>
+        <input type="range" id="mw1m2-speed" min="0.5" max="1.5" step="0.01" value="1" style="width:120px;">
+    </div>
+
+    <midi-player id="mw1m2-player" sound-font visualizer="#mw1m2-viz"></midi-player>
+    <midi-visualizer type="piano-roll" id="mw1m2-viz"></midi-visualizer>
+</div>
+
+<!-- ===================================================== -->
+<!-- MAJOR WORK 2 -->
+<!-- ===================================================== -->
+<h2>Major Work 2</h2>
+
+<!-- MOVEMENT 1 -->
+<div class="movement">
+    <div class="row">
+        <strong>1st Movement</strong>
+
+        <select id="mw2m1-select">
+            <option value="midis/MW2-M1-Balanced.mid">Balanced</option>
+            <option value="midis/MW2-M1-Soprano.mid">Soprano</option>
+            <option value="midis/MW2-M1-Alto.mid">Alto</option>
+            <option value="midis/MW2-M1-Tenor.mid">Tenor</option>
+            <option value="midis/MW2-M1-Bass.mid">Bass</option>
+        </select>
+
+        <label>Pan</label>
+        <input type="range" id="mw2m1-pan" min="-1" max="1" step="0.01" value="0" style="width:120px;">
+
+        <label>Speed</label>
+        <input type="range" id="mw2m1-speed" min="0.5" max="1.5" step="0.01" value="1" style="width:120px;">
+    </div>
+
+    <midi-player id="mw2m1-player" sound-font visualizer="#mw2m1-viz"></midi-player>
+    <midi-visualizer type="piano-roll" id="mw2m1-viz"></midi-visualizer>
+</div>
+
+<!-- ===================================================== -->
+<!-- DOWNLOAD TABLE -->
+<!-- ===================================================== -->
+
+<h2>Download MIDI Files</h2>
+
+<table>
+    <tr>
+        <td>1st Movement</td>
+        <td><a href="midis/MW1-M1-Balanced.mid">Balanced</a></td>
+        <td><a href="midis/MW1-M1-Soprano.mid">Soprano</a></td>
+        <td><a href="midis/MW1-M1-Alto.mid">Alto</a></td>
+        <td><a href="midis/MW1-M1-Tenor.mid">Tenor</a></td>
+        <td><a href="midis/MW1-M1-Bass.mid">Bass</a></td>
+    </tr>
+
+    <tr>
+        <td>2nd Movement</td>
+        <td><a href="midis/MW1-M2-Balanced.mid">Balanced</a></td>
+        <td><a href="midis/MW1-M2-Soprano.mid">Soprano</a></td>
+        <td><a href="midis/MW1-M2-Alto.mid">Alto</a></td>
+        <td><a href="midis/MW1-M2-Tenor.mid">Tenor</a></td>
+        <td><a href="midis/MW1-M2-Bass.mid">Bass</a></td>
+    </tr>
+
+    <tr>
+        <td>1st Movement (MW2)</td>
+        <td><a href="midis/MW2-M1-Balanced.mid">Balanced</a></td>
+        <td><a href="midis/MW2-M1-Soprano.mid">Soprano</a></td>
+        <td><a href="midis/MW2-M1-Alto.mid">Alto</a></td>
+        <td><a href="midis/MW2-M1-Tenor.mid">Tenor</a></td>
+        <td><a href="midis/MW2-M1-Bass.mid">Bass</a></td>
+    </tr>
+</table>
+
+<script>
+function wireMovement(prefix) {
+    const player = document.getElementById(prefix + "-player");
+
+    document.getElementById(prefix + "-select").addEventListener("change", e => {
+        player.src = e.target.value;
+    });
+
+    document.getElementById(prefix + "-pan").addEventListener("input", e => {
+        player.player.output.gainNode.pan.value = e.target.value;
+    });
+
+    document.getElementById(prefix + "-speed").addEventListener("input", e => {
+        player.playbackRate = e.target.value;
+    });
+}
+
+["mw1m1", "mw1m2", "mw2m1"].
