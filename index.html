@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<base href="/" />
-<title>Kings MIDI Player</title>
+<title>Kings MIDI Player – No Visualizer</title>
 
 <!-- Tone.js -->
 <script src="https://cdn.jsdelivr.net/npm/tone@14.7.58/build/Tone.js"></script>
@@ -11,7 +10,7 @@
 <!-- Magenta -->
 <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.23.1/es6/core.js"></script>
 
-<!-- html-midi-player (UMD build that works on GitHub Pages) -->
+<!-- html-midi-player (UMD build, required for <midi-player>) -->
 <script src="https://unpkg.com/html-midi-player@1.4.0/dist/html-midi-player.js"></script>
 
 <style>
@@ -66,7 +65,7 @@
 
 <body>
 
-<h1>Kings MIDI Player new src</h1>
+<h1>Kings MIDI Player – No Visualizer</h1>
 
 <!-- ===================================================== -->
 <!-- MAJOR WORK 1 -->
@@ -79,7 +78,7 @@
         <strong>1st Movement</strong>
 
         <select id="mw1m1-select">
-            <option value="midis/MW1-M1-Balanced.mid">Balanced</option>
+            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">Balanced</option>
             <option value="midis/MW1-M1-Soprano.mid">Soprano</option>
             <option value="midis/MW1-M1-Alto.mid">Alto</option>
             <option value="midis/MW1-M1-Tenor.mid">Tenor</option>
@@ -95,9 +94,7 @@
 
     <midi-player id="mw1m1-player"
         src="midis/MW1-M1-Balanced.mid"
-        sound-font
-        visualizer="#mw1m1-viz"></midi-player>
-    <midi-visualizer type="piano-roll" id="mw1m1-viz"></midi-visualizer>
+        sound-font></midi-player>
 </div>
 
 <!-- MOVEMENT 2 -->
@@ -122,9 +119,7 @@
 
     <midi-player id="mw1m2-player"
         src="midis/MW1-M2-Balanced.mid"
-        sound-font
-        visualizer="#mw1m2-viz"></midi-player>
-    <midi-visualizer type="piano-roll" id="mw1m2-viz"></midi-visualizer>
+        sound-font></midi-player>
 </div>
 
 <!-- ===================================================== -->
@@ -138,8 +133,8 @@
         <strong>1st Movement</strong>
 
         <select id="mw2m1-select">
-            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">Balanced</option>
-            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">Soprano</option>
+            <option value="midis/MW2-M1-Balanced.mid">Balanced</option>
+            <option value="midis/MW2-M1-Soprano.mid">Soprano</option>
             <option value="midis/MW2-M1-Alto.mid">Alto</option>
             <option value="midis/MW2-M1-Tenor.mid">Tenor</option>
             <option value="midis/MW2-M1-Bass.mid">Bass</option>
@@ -154,9 +149,7 @@
 
     <midi-player id="mw2m1-player"
         src="midis/MW2-M1-Balanced.mid"
-        sound-font
-        visualizer="#mw2m1-viz"></midi-player>
-    <midi-visualizer type="piano-roll" id="mw2m1-viz"></midi-visualizer>
+        sound-font></midi-player>
 </div>
 
 <!-- ===================================================== -->
