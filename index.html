@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <base href="/" />
 <title>Kings MIDI Player</title>
 
+<!-- Tone.js -->
 <script src="https://cdn.jsdelivr.net/npm/tone@14.7.58/build/Tone.js"></script>
+
+<!-- Magenta -->
 <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.23.1/es6/core.js"></script>
-<script type="module" src="https://unpkg.com/html-midi-player@1.4.0/dist/html-midi-player.js"></script>
 
-
+<!-- html-midi-player (UMD build that works on GitHub Pages) -->
+<script src="https://cdn.jsdelivr.net/npm/html-midi-player@1.4.0/dist/html-midi-player.js"></script>
 
 <style>
     body {
@@ -77,8 +79,8 @@
         <strong>1st Movement</strong>
 
         <select id="mw1m1-select">
-            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">Balanced</option>
-            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.midss">Soprano</option>
+            <option value="midis/MW1-M1-Balanced.mid">Balanced</option>
+            <option value="midis/MW1-M1-Soprano.mid">Soprano</option>
             <option value="midis/MW1-M1-Alto.mid">Alto</option>
             <option value="midis/MW1-M1-Tenor.mid">Tenor</option>
             <option value="midis/MW1-M1-Bass.mid">Bass</option>
@@ -136,8 +138,8 @@
         <strong>1st Movement</strong>
 
         <select id="mw2m1-select">
-            <option value="midis/MW2-M1-Balanced.mid">Balanced</option>
-            <option value="midis/MW2-M1-Soprano.mid">Soprano</option>
+            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">Balanced</option>
+            <option value="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">Soprano</option>
             <option value="midis/MW2-M1-Alto.mid">Alto</option>
             <option value="midis/MW2-M1-Tenor.mid">Tenor</option>
             <option value="midis/MW2-M1-Bass.mid">Bass</option>
@@ -199,19 +201,16 @@ function wireMovement(prefix) {
     const panEl    = document.getElementById(prefix + "-pan");
     const speedEl  = document.getElementById(prefix + "-speed");
 
-    // Change file
     selectEl.addEventListener("change", e => {
         playerEl.src = e.target.value;
     });
 
-    // Pan slider
     panEl.addEventListener("input", e => {
         const p = playerEl.player;
         if (!p || !p.output || !p.output.gainNode || !p.output.gainNode.pan) return;
         p.output.gainNode.pan.value = parseFloat(e.target.value);
     });
 
-    // Speed slider
     speedEl.addEventListener("input", e => {
         const p = playerEl.player;
         if (!p) return;
